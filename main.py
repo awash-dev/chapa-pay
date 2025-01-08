@@ -21,7 +21,7 @@ def pay(payit: Payit):
         return data
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
+#
 class Txnum(BaseModel):
     ref_num: str
 
