@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from chapaConfig import Payment
 from pydantic import BaseModel, EmailStr, PositiveInt
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 origins = [
