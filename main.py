@@ -4,20 +4,25 @@ from pydantic import BaseModel, EmailStr, PositiveInt
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+# Define allowed origins for CORS
 origins = [
     "http://localhost.tiangolo.com",
     "https://localhost.tiangolo.com",
     "http://localhost",
     "http://localhost:8080",
+    "https://chapa-pay-ier8.onrender.com",  # Added new origin
 ]
 
+# Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_origins=origins,  # Allowed origins
+    allow_credentials=True,   # Allow credentials
+    allow_methods=["*"],      # Allow all methods
+    allow_headers=["*"],      # Allow all headers
 )
+
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
@@ -35,7 +40,7 @@ def pay(payit: Payit):
         return data
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-#
+
 class Txnum(BaseModel):
     ref_num: str
 
