@@ -3,3 +3,4 @@ chapa
 fastapi
 uvicorn
 pydantic[email]
+CORSMiddleware
